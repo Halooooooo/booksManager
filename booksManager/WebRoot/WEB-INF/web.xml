@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name></display-name>
+  	 <filter>
+	 	<filter-name>LoginFilter</filter-name>
+	 	<filter-class>filter.LoginFilter</filter-class>
+	 </filter>
+	 <filter-mapping>
+	 	<filter-name>LoginFilter</filter-name>
+	 	<url-pattern>/*</url-pattern>
+	 </filter-mapping>
+	 
+	 <listener>
+		<listener-class>Listener.mysessionListener</listener-class>
+	</listener>
+   <servlet>  
+       	<servlet-name>log4jServlet</servlet-name>
+   		<servlet-class>Utils.log4jServlet</servlet-class>
+        <init-param>  
+            <param-name>log4j-properties-location</param-name>  
+            <param-value>/WEB-INF/classes/log4j.properties</param-value>  
+        </init-param>  
+        <load-on-startup>1</load-on-startup>  
+    </servlet>  
+  
+  <servlet>
+    <servlet-name>bookServlet</servlet-name>
+    <servlet-class>Controller.book.bookServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>loginServlet</servlet-name>
+    <servlet-class>Controller.login.loginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>Controller.user.UserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>signServlet</servlet-name>
+    <servlet-class>Controller.login.signServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>bookServlet</servlet-name>
+    <url-pattern>*.book</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>loginServlet</servlet-name>
+    <url-pattern>/loginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>*.user</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>signServlet</servlet-name>
+    <url-pattern>*.sign</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>loginUI.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
